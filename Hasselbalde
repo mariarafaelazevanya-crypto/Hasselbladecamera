@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title-[#D4AF37]">Hasselblad | Standar Tertinggi Fotografi Medium Format</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN for 3D Interactive Viewport -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        obsidian: '#0B0B0C',
+                        surface: '#141416',
+                        titanium: '#E5E5E7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Courier New', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0B0C;
+            color: #E5E5E7;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #26262a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="selection:bg-gold selection:text-black antialiased overflow-x-hidden">
+
+    <!-- 1. STICKY NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0B0C]/80 backdrop-blur-2xl border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-gold to-amber-200 flex items-center justify-center text-black font-bold font-serif text-xl shadow-lg shadow-gold/20">
+                    H
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif tracking-widest text-lg font-bold text-white group-hover:text-gold transition-colors">
+                        HASSELBLAD
+                    </span>
+                    <span class="text-[9px] tracking-widest uppercase text-neutral-400 font-mono">
+                        SWEDEN 1941
+                    </span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-neutral-300 font-medium">
+                <a href="#medium-format" class="hover:text-gold transition-colors">Medium Format</a>
+                <a href="#colour" class="hover:text-gold transition-colors">Natural Colour</a>
+                <a href="#precision" class="hover:text-gold transition-colors">Presisi Optik</a>
+                <a href="#mastery" class="hover:text-gold transition-colors">Galeri Kurator</a>
+                <a href="#specs" class="hover:text-gold transition-colors font-semibold text-white">X2D 100C</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#concierge" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-gold via-amber-300 to-gold text-black font-medium text-xs tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all transform hover:-translate-y-0.5">
+                    Private Demo
+                </a>
+            </div>
+
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-white">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-[#141416] border-b border-white/10 px-6 py-6 flex flex-col gap-4 text-sm font-medium tracking-wider">
+            <a href="#medium-format" class="py-2 border-b border-white/5">Medium Format</a>
+            <a href="#colour" class="py-2 border-b border-white/5">Natural Colour</a>
+            <a href="#precision" class="py-2 border-b border-white/5">Presisi Optik</a>
+            <a href="#mastery" class="py-2 border-b border-white/5">Galeri Kurator</a>
+            <a href="#specs" class="py-2 border-b border-white/5">Spesifikasi X2D</a>
+            <a href="#concierge" class="mt-2 text-center py-3 rounded-xl bg-gold text-black font-semibold uppercase text-xs">
+                Private Demo
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO SECTION (Layout Family A: Interactive 3D Canvas + Split Typography) -->
+    <section id="hero" class="relative min-h-screen pt-32 pb-20 px-6 flex items-center justify-center overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-5 space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono tracking-widest text-gold">
+                    <i class="fa-solid fa-gem"></i>
+                    SWEDISH CRAFTSMANSHIP SINCE 1941
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-[1.1]">
+                    Standard Tanpa Kompromi Dalam Fotografi <span class="font-italic text-gold italic">Medium Format</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
+                    Presisi Skandinavia dan kualitas warna HNCS ikonik untuk mahakarya tak lekang waktu. Dirancang khusus bagi fotografer komersial dan kurator seni tinggi yang menuntut detail autentik tanpa manipulasi digital berlebih.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                    <a href="#concierge" class="px-8 py-4 rounded-full bg-gold hover:bg-amber-300 text-black font-semibold text-xs tracking-widest uppercase text-center transition-all shadow-xl shadow-gold/20 flex items-center justify-center gap-2 group">
+                        Pesan Konsultasi Atelier
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#specs" class="px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-xs tracking-widest uppercase text-center backdrop-blur-md transition-all">
+                        Jelajahi Specs X2D
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 text-left">
+                    <div>
+                        <div class="text-2xl font-serif font-light text-white">100 MP</div>
+                        <div class="text-[11px] text-neutral-400 uppercase tracking-wider font-mono">BSI CMOS Sensor</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-serif font-light text-white">16-Bit</div>
+                        <div class="text-[11px] text-neutral-400 uppercase tracking-wider font-mono">Kedalaman Warna</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-serif font-light text-white">15 Stop</div>
+                        <div class="text-[11px] text-neutral-400 uppercase tracking-wider font-mono">Dynamic Range</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Canvas Viewport Container -->
+            <div id="medium-format" class="lg:col-span-7 h-[450px] sm:h-[550px] lg:h-[620px] w-full relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#141416] via-[#0B0B0C] to-black border border-white/10 shadow-2xl">
+                <div id="threeCanvas" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+                
+                <div class="absolute bottom-4 left-4 right-4 md:left-6 md:right-auto bg-black/60 backdrop-blur-xl border border-white/10 p-3 rounded-xl flex items-center gap-4 text-xs text-neutral-300 z-10 flex-wrap">
+                    <button id="toggleWireframe" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-cubes text-gold"></i>
+                        <span>Rangka 3D</span>
+                    </button>
+                    <button id="toggleRotation" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-rotate text-gold"></i>
+                        <span>Jeda Rotasi</span>
+                    </button>
+                    <span class="text-[10px] text-neutral-500 uppercase tracking-widest ml-auto font-mono hidden lg:inline">
+                        Interactive Three.js Engine
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: COLOR ARCHITECTURE (Layout Family B: Asymmetric Metric Cards + Interactive Spectrum Engine) -->
+    <section id="colour" class="py-28 px-6 bg-[#141416]/60 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="max-w-3xl space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-gold font-mono">Architecture of Color & Light</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-light text-white">
+                    Hasselblad Natural Colour Solution (HNCS)
+                </h3>
+                <p class="text-neutral-400 text-sm sm:text-base leading-relaxed">
+                    Fotografi sejati tidak memerlukan filter berlebihan. Algoritma HNCS memproses 64 miliar variasi warna langsung dari sensor medium format untuk merekam kontinuitas spektrum nada kulit dan lanskap alam secara persis sesuai penglihatan mata manusia.
+                </p>
+            </div>
+
+            <div class="bg-[#0B0B0C] border border-white/10 rounded-2xl p-6 sm:p-10 space-y-8 shadow-2xl">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6">
+                    <div>
+                        <span class="text-xs font-mono text-neutral-400 uppercase tracking-wider">Simulasi Komparasi Warna Sensor</span>
+                        <h4 class="text-xl font-serif text-white">16-bit HNCS Medium Format vs 8-bit Standard sRGB</h4>
+                    </div>
+                    <span id="spectrumStatus" class="px-3 py-1 rounded bg-white/5 border border-white/10 text-neutral-300 text-xs font-mono">
+                        Mode Terpilih: Dynamic HNCS Spectrum
+                    </span>
+                </div>
+
+                <div class="relative h-72 sm:h-96 rounded-xl overflow-hidden border border-white/10 group select-none">
+                    <!-- Base 8-bit Background -->
+                    <div class="absolute inset-0 bg-neutral-900">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80" alt="Standard 8bit" class="w-full h-full object-cover filter contrast-125 saturate-75 brightness-90">
+                        <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded text-[11px] font-mono text-neutral-300 border border-white/10">
+                            Standard 8-bit sRGB
+                        </div>
+                    </div>
+
+                    <!-- Overlay 16-bit HNCS Clip Container -->
+                    <div id="hncsOverlay" class="absolute inset-y-0 left-0 bg-black overflow-hidden border-r-2 border-gold" style="width: 50%;">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=95" alt="Hasselblad 16bit" class="w-full h-full object-cover max-w-none" style="width: 100%; height: 100%;">
+                        <div class="absolute top-4 left-4 bg-gold text-black font-semibold px-3 py-1.5 rounded text-[11px] font-mono shadow-lg">
+                            Hasselblad 16-bit HNCS
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-mono text-neutral-400">
+                        <span>0% Standard Digital Compressed</span>
+                        <span>50% Mid Spectrum</span>
+                        <span>100% Full 16-Bit Dynamic HNCS</span>
+                    </div>
+                    <input type="range" id="colorRange" min="0" max="100" value="50" class="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-gold">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#0B0B0C] p-8 rounded-2xl border border-white/10 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gold">
+                        <i class="fa-solid fa-microchip text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-serif text-white">Sensor BSI 100 Megapixel</h4>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Sensor backlight illuminated memperluas penyerapan cahaya hingga sudut piksel terkecil, menghasilkan kejernihan mikro pada serat kain, tekstur kulit, dan arsitektur.
+                    </p>
+                </div>
+
+                <div class="bg-[#0B0B0C] p-8 rounded-2xl border border-white/10 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gold">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-serif text-white">15 Stop Rentang Dinamis</h4>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Transisi dari sorotan sinar matahari yang terang menuju bayangan paling dalam terekam sempurna tanpa gradasi terputus atau area terpotong.
+                    </p>
+                </div>
+
+                <div class="bg-[#0B0B0C] p-8 rounded-2xl border border-white/10 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gold">
+                        <i class="fa-solid fa-sliders text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-serif text-white">Profil Warna Autentik</h4>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Tidak ada preset warna buatan. HNCS memberikan kepastian bahwa warna sampel produk komersial atau karya galeri terekam presisi 100 persen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SCANDINAVIAN CRAFTSMANSHIP (Layout Family C: Interactive Exploded View & Hotspots) -->
+    <section id="precision" class="py-28 px-6 bg-[#0B0B0C] relative">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div class="max-w-2xl space-y-4">
+                    <h2 class="text-xs uppercase tracking-widest text-gold font-mono">Scandinavian Precision Engineering</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-light text-white">
+                        Setiap Komponen Difrais Presisi di Göteborg, Swedia
+                    </h3>
+                </div>
+                <button id="toggleExplodeBtn" class="px-6 py-3 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs uppercase font-semibold tracking-wider transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-up-down-left-right text-gold"></i>
+                    <span id="explodeBtnText">Urai Komponen Optik 3D</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 h-[420px] sm:h-[480px] relative rounded-2xl border border-white/10 overflow-hidden bg-neutral-950 p-6 flex items-center justify-center">
+                    <!-- Conceptual Visual Render of Camera Body and Leaf Shutter -->
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <div id="hotspotChassis" class="w-64 h-44 rounded-3xl bg-neutral-900 border-2 border-neutral-700 shadow-2xl relative flex items-center justify-center transition-all duration-700">
+                            <!-- Lens Assembly Container -->
+                            <div id="hotspotLens" class="w-36 h-36 rounded-full bg-gradient-to-tr from-neutral-800 to-black border-4 border-gold/60 shadow-xl flex items-center justify-center relative transition-all duration-700">
+                                <div class="w-20 h-20 rounded-full bg-blue-900/40 border-2 border-white/20 flex items-center justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hotspot Pins -->
+                        <button onclick="showHotspot('sensor')" class="absolute top-1/2 left-1/3 p-3 rounded-full bg-gold text-black font-bold animate-bounce hover:scale-110 transition-transform shadow-lg shadow-gold/50 text-xs">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button onclick="showHotspot('chassis')" class="absolute top-1/3 left-1/4 p-3 rounded-full bg-gold text-black font-bold animate-bounce hover:scale-110 transition-transform shadow-lg shadow-gold/50 text-xs">
+                            <i class="fa-solid fa-shield"></i>
+                        </button>
+                        <button onclick="showHotspot('shutter')" class="absolute top-1/2 right-1/4 p-3 rounded-full bg-gold text-black font-bold animate-bounce hover:scale-110 transition-transform shadow-lg shadow-gold/50 text-xs">
+                            <i class="fa-solid fa-camera"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6">
+                    <div id="hotspotCard" class="bg-[#141416] p-8 rounded-2xl border border-white/10 space-y-4 transition-all">
+                        <span id="hotspotTag" class="text-xs font-mono text-gold uppercase tracking-wider">Detail Keteknikan</span>
+                        <h4 id="hotspotTitle" class="text-2xl font-serif text-white">Filosofi Keahlian Tangan Skandinavia</h4>
+                        <p id="hotspotDesc" class="text-neutral-400 text-sm leading-relaxed">
+                            Setiap kamera Hasselblad X2D 100C diproduksi secara individu oleh teknisi berpengalaman. Permukaan bodi dilapisi dengan perlakuan khusus anodized graphite yang tahan terhadap cuaca ekstrem dan gesekan tinggi saat pengambilan gambar di lapangan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: CURATED MASTERPIECE GALLERY (Layout Family D: Full-Bleed Masonry Lightbox Grid) -->
+    <section id="mastery" class="py-28 px-6 bg-[#141416]/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div class="max-w-2xl space-y-4">
+                    <h2 class="text-xs uppercase tracking-widest text-gold font-mono">Curated Fine Art Collection</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-light text-white">
+                        Galeri Mahakarya Fotografer Dunia
+                    </h3>
+                </div>
+                <span class="text-xs font-mono text-neutral-400">
+                    Klik gambar untuk membuka inspeksi resolusi tinggi
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85', 'Solitude in Nordland', 'Sven Lindqvist', 'Landscape Dynamic')" class="group relative h-[400px] rounded-2xl overflow-hidden border border-white/10 cursor-pointer bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85" alt="Nordland" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
+                        <span class="px-3 py-1 rounded-full bg-gold/20 border border-gold/40 text-gold text-[10px] font-mono uppercase tracking-widest">Landscape Dynamic</span>
+                        <h4 class="text-2xl font-serif text-white">Solitude in Nordland</h4>
+                        <div class="flex justify-between items-center text-xs text-neutral-400 pt-2 border-t border-white/10 font-mono">
+                            <span>Fotografer: Sven Lindqvist</span>
+                            <span class="text-gold">15.2 Dynamic Stops</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85', 'Portrait of High Fashion', 'Elena Rostova', 'Studio Skin Tone')" class="group relative h-[400px] rounded-2xl overflow-hidden border border-white/10 cursor-pointer bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" alt="Fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
+                        <span class="px-3 py-1 rounded-full bg-gold/20 border border-gold/40 text-gold text-[10px] font-mono uppercase tracking-widest">Studio Skin Tone</span>
+                        <h4 class="text-2xl font-serif text-white">Portrait of High Fashion</h4>
+                        <div class="flex justify-between items-center text-xs text-neutral-400 pt-2 border-t border-white/10 font-mono">
+                            <span>Fotografer: Elena Rostova</span>
+                            <span class="text-gold">16-bit Natural HNCS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL CONTAINER -->
+    <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-6">
+        <div class="max-w-5xl w-full bg-[#141416] border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative space-y-6 p-6 sm:p-8">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="h-[450px] w-full rounded-xl overflow-hidden border border-white/10 bg-black">
+                <img id="lightboxImg" src="" alt="Zoom" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h4 id="lightboxTitle" class="text-2xl font-serif text-white">Title</h4>
+                <p id="lightboxArtist" class="text-xs text-neutral-400 font-mono mt-1">Artist</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: TECHNICAL MATRIX (Layout Family E: Interactive Data Matrix Table) -->
+    <section id="specs" class="py-28 px-6 bg-[#0B0B0C] border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-gold font-mono">System Architecture</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-light text-white">
+                    Spesifikasi Teknis Kamera Hasselblad X2D 100C
+                </h3>
+            </div>
+
+            <div class="flex flex-wrap gap-4 border-b border-white/10 pb-4">
+                <button onclick="switchSpecTab('studio')" id="tab-studio" class="px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-mono bg-gold text-black font-bold">
+                    Studio Master
+                </button>
+                <button onclick="switchSpecTab('landscape')" id="tab-landscape" class="px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-mono bg-white/5 text-neutral-400 hover:text-white">
+                    Field Landscape
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#141416] p-6 rounded-2xl border border-white/10 space-y-3">
+                    <span class="text-xs font-mono text-neutral-500 uppercase">Sensor Utama</span>
+                    <div class="text-2xl font-serif text-white">100MP BSI CMOS</div>
+                    <p id="specSensorText" class="text-xs text-neutral-400 leading-relaxed">
+                        Detail mikro sempurna untuk pencetakan komersial ukuran cetak spanduk besar tanpa pikselasi.
+                    </p>
+                </div>
+
+                <div class="bg-[#141416] p-6 rounded-2xl border border-white/10 space-y-3">
+                    <span class="text-xs font-mono text-neutral-500 uppercase">Penyimpanan Internal</span>
+                    <div class="text-2xl font-serif text-white">1TB PCIe 4.0 SSD</div>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Kecepatan tulis hingga 2370 MB/s memungkinkan perekaman RAW berkelanjutan tanpa hambatan buffer.
+                    </p>
+                </div>
+
+                <div class="bg-[#141416] p-6 rounded-2xl border border-white/10 space-y-3">
+                    <span class="text-xs font-mono text-neutral-500 uppercase">Stabilisasi IBIS</span>
+                    <div class="text-2xl font-serif text-white">5-Aksis 7-Stop</div>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Pengambilan gambar genggam tanpa tripod hingga beberapa detik tetap tajam bebas guncangan.
+                    </p>
+                </div>
+
+                <div class="bg-[#141416] p-6 rounded-2xl border border-white/10 space-y-3">
+                    <span class="text-xs font-mono text-neutral-500 uppercase">Autofokus</span>
+                    <div class="text-2xl font-serif text-white">294 PDAF Zones</div>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Cakupan area fokus 97% memastikan subjek terkunci seketika dalam sepersekian detik.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: HERITAGE TIMELINE (Layout Family F: Horizontal Milestones Grid) -->
+    <section class="py-28 px-6 bg-[#141416]/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="max-w-2xl space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-gold font-mono">Heritage Timeline</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-light text-white">
+                    Dari Bulan Hingga Mahakarya Digital Masa Kini
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#0B0B0C] p-8 rounded-2xl border border-white/10 space-y-4">
+                    <span class="text-4xl font-serif text-gold font-light">1969</span>
+                    <h4 class="text-lg font-serif text-white">Misi Apollo 11 di Bulan</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Kamera Hasselblad EDC dipilih oleh NASA untuk mengabadikan jejak kaki pertama manusia di permukaan bulan karena keandalan mekanis suhu ekstrem.
+                    </p>
+                </div>
+
+                <div class="bg-[#0B0B0C] p-8 rounded-2xl border border-white/10 space-y-4">
+                    <span class="text-4xl font-serif text-gold font-light">2002</span>
+                    <h4 class="text-lg font-serif text-white">Pengembangan HNCS</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Peluncuran teknologi sistem warna natural Hasselblad yang membebaskan fotografer dari pembuatan profil warna manual yang rumit.
+                    </p>
+                </div>
+
+                <div class="bg-[#0B0B0C] p-8 rounded-2xl border border-white/10 space-y-4">
+                    <span class="text-4xl font-serif text-gold font-light">2026</span>
+                    <h4 class="text-lg font-serif text-white">Era Medium Format X2D 100C</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Perpaduan sempurna antara keahlian mekanis klasik Swedia dan inovasi sensor BSI 100MP generasi terbaru.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: BESPOKE ATELIER & ENGRAVING PREVIEW (Layout Family G: Dynamic Text Previewer & Reservation Form) -->
+    <section id="concierge" class="py-28 px-6 bg-[#0B0B0C] border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <div class="lg:col-span-6 bg-[#141416] p-8 sm:p-10 rounded-2xl border border-white/10 space-y-8">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono text-gold uppercase tracking-wider">Layanan Ukir Laser Monogram Personal</span>
+                    <h3 class="text-2xl font-serif text-white">Personalisasi Plat Titanium Kamera Anda</h3>
+                    <p class="text-xs text-neutral-400">
+                        Setiap kamera Hasselblad X2D yang dipesan melalui atelier resmi dapat diukir dengan inisial nama atau nama studio Anda pada plat titanium khusus.
+                    </p>
+                </div>
+
+                <div class="h-44 rounded-xl bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 border border-gold/30 flex flex-col items-center justify-center p-6 shadow-2xl relative">
+                    <div class="absolute top-3 left-4 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
+                        HASSELBLAD GÖTEBORG ATELIER EDITION
+                    </div>
+                    <div id="engravingPreview" class="text-gold font-serif text-2xl sm:text-3xl tracking-widest border-b border-gold/40 pb-2 px-8 uppercase font-bold text-center">
+                        GUSTAV V.
+                    </div>
+                    <div class="text-[10px] font-mono text-neutral-400 mt-3">
+                        SWEDISH TITANIUM ENGRAVED BADGE
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="text-xs font-mono text-neutral-300 uppercase">Ketik Teks Inisial / Nama Studio (Maks 15 Karakter):</label>
+                    <input type="text" id="engravingInput" maxlength="15" value="GUSTAV V." placeholder="CONTOH: GUSTAV V." class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-gold transition-colors">
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 bg-[#141416] p-8 sm:p-10 rounded-2xl border border-white/10 space-y-6">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono text-gold uppercase tracking-wider">Atelier Private Concierge</span>
+                    <h3 class="text-2xl font-serif text-white">Reservasi Konsultasi & Uji Coba Lensa</h3>
+                    <p class="text-xs text-neutral-400">
+                        Jadwalkan sesi demonstrasi pribadi dengan spesialis produk Hasselblad di atelier terdekat atau di studio Anda.
+                    </p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Permintaan demo private Anda telah diterima oleh Concierge Hasselblad.');" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono text-neutral-300 uppercase">Nama Lengkap</label>
+                            <input type="text" required placeholder="Alexander Wright" class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-white text-sm focus:outline-none focus:border-gold">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono text-neutral-300 uppercase">Email Profesional</label>
+                            <input type="email" required placeholder="wright@studio.com" class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-white text-sm focus:outline-none focus:border-gold">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-mono text-neutral-300 uppercase">Lokasi Atelier Pilihan</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-white text-sm focus:outline-none focus:border-gold">
+                            <option>Göteborg Atelier, Sweden</option>
+                            <option>Tokyo Ginza Flagship, Japan</option>
+                            <option>New York Soho Studio, USA</option>
+                            <option>London Mayfair Showroom, UK</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gold hover:bg-amber-300 text-black font-semibold text-xs tracking-widest uppercase transition-all shadow-xl shadow-gold/20">
+                        Kirim Permintaan Demo Private VIP
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: SCANDINAVIAN FOOTER -->
+    <footer class="bg-[#080809] text-neutral-400 border-t border-white/10 pt-20 pb-12 px-6">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gold flex items-center justify-center text-black font-bold font-serif">
+                            H
+                        </div>
+                        <span class="font-serif tracking-widest text-lg font-bold text-white">
+                            HASSELBLAD
+                        </span>
+                    </div>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Menciptakan standar tertinggi dalam dunia fotografi medium format sejak 1941. Presisi Skandinavia dan kualitas warna ikonik yang tiada tanding.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h5 class="text-xs font-mono uppercase tracking-widest text-white">Sistem Kamera</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#specs" class="hover:text-white transition-colors">X2D 100C</a></li>
+                        <li><a href="#specs" class="hover:text-white transition-colors">CFV 100C</a></li>
+                        <li><a href="#precision" class="hover:text-white transition-colors">Lensa XCD Systems</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h5 class="text-xs font-mono uppercase tracking-widest text-white">Atelier & Layanan</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#concierge" class="hover:text-white transition-colors">Private Demo Request</a></li>
+                        <li><a href="#concierge" class="hover:text-white transition-colors">Custom Laser Monogram</a></li>
+                        <li><a href="#mastery" class="hover:text-white transition-colors">Master Fine Art Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h5 class="text-xs font-mono uppercase tracking-widest text-white">Göteborg Headquarters</h5>
+                    <p class="text-xs text-neutral-400">
+                        Utvecklingsgatan 2, SE-417 56 Göteborg, Sweden.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] font-mono text-neutral-500 gap-4">
+                <div>
+                    © 2026 Victor Hasselblad AB. Hak Cipta Dilindungi Undang Undang.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-neutral-300">Privasi & Legal</a>
+                    <a href="#" class="hover:text-neutral-300">Syarat Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE EMBEDDED JAVASCRIPT -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Three.js Interactive Viewport Initialization
+        const container = document.getElementById('threeCanvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 1.2, 4.5);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // Lighting setup
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const mainLight = new THREE.DirectionalLight(0xd4af37, 1.5);
+        mainLight.position.set(5, 5, 5);
+        scene.add(mainLight);
+
+        // Hasselblad Camera Body Group
+        const cameraGroup = new THREE.Group();
+        
+        // Materials
+        let isWireframe = false;
+        const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0x141416, metalness: 0.85, roughness: 0.2, wireframe: isWireframe });
+        const goldMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.9, roughness: 0.15, wireframe: isWireframe });
+        const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, transmission: 0.9, opacity: 1, transparent: true, roughness: 0.05 });
+
+        // Body Mesh
+        const bodyGeo = new THREE.BoxGeometry(2.2, 1.6, 1.0);
+        const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
+        cameraGroup.add(bodyMesh);
+
+        // Top Cap
+        const capGeo = new THREE.CylinderGeometry(0.6, 0.8, 0.4, 32);
+        const capMesh = new THREE.Mesh(capGeo, goldMat);
+        capMesh.position.set(0, 0.9, 0);
+        cameraGroup.add(capMesh);
+
+        // Lens Mount Ring
+        const ringGeo = new THREE.TorusGeometry(0.65, 0.06, 16, 64);
+        const ringMesh = new THREE.Mesh(ringGeo, goldMat);
+        ringMesh.position.set(0, 0, 0.52);
+        cameraGroup.add(ringMesh);
+
+        // Lens Barrel
+        const lensGeo = new THREE.CylinderGeometry(0.62, 0.62, 1.2, 64);
+        lensGeo.rotateX(Math.PI / 2);
+        const lensMesh = new THREE.Mesh(lensGeo, bodyMat);
+        lensMesh.position.set(0, 0, 0.6);
+        cameraGroup.add(lensMesh);
+
+        // Front Glass Element
+        const glassGeo = new THREE.SphereGeometry(0.55, 32, 16, 0, Math.PI * 2, 0, Math.PI / 4);
+        glassGeo.rotateX(Math.PI / 2);
+        const glassMesh = new THREE.Mesh(glassGeo, glassMat);
+        glassMesh.position.set(0, 0, 1.15);
+        cameraGroup.add(glassMesh);
+
+        scene.add(cameraGroup);
+
+        // Rotation & Interactivity
+        let autoRotate = true;
+        function animate() {
+            requestAnimationFrame(animate);
+            if (autoRotate) {
+                cameraGroup.rotation.y += 0.005;
+            }
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Control buttons
+        document.getElementById('toggleWireframe').addEventListener('click', () => {
+            isWireframe = !isWireframe;
+            bodyMat.wireframe = isWireframe;
+            goldMat.wireframe = isWireframe;
+        });
+
+        document.getElementById('toggleRotation').addEventListener('click', () => {
+            autoRotate = !autoRotate;
+        });
+
+        window.addEventListener('resize', () => {
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        });
+
+        // 3. Color Range Slider Comparator
+        const colorRange = document.getElementById('colorRange');
+        const hncsOverlay = document.getElementById('hncsOverlay');
+        colorRange.addEventListener('input', (e) => {
+            hncsOverlay.style.width = `${e.target.value}%`;
+        });
+
+        // 4. Hotspot Information Controller
+        const hotspotsData = {
+            sensor: {
+                title: '100MP BSI Medium Format Sensor',
+                desc: 'Sensor BSI berukuran 43.8 x 32.9 mm memberikan resolusi masif dengan rentang dinamis hingga 15 stop.'
+            },
+            chassis: {
+                title: 'Solid CNC Aluminum Monocoque',
+                desc: 'Setiap bodi difrais dari satu blok aluminium aero-grade untuk kekuatan struktural presisi mutlak.'
+            },
+            shutter: {
+                title: 'Custom Central Leaf Shutter',
+                desc: 'Mekanisme rana dalam lensa yang mampu melakukan sinkronisasi flash penuh pada semua kecepatan hingga 1/4000 detik.'
+            }
+        };
+
+        function showHotspot(key) {
+            const data = hotspotsData[key];
+            if (data) {
+                document.getElementById('hotspotTitle').innerText = data.title;
+                document.getElementById('hotspotDesc').innerText = data.desc;
+            }
+        }
+
+        // Explode Component Simulation Toggle
+        let isExploded = false;
+        document.getElementById('toggleExplodeBtn').addEventListener('click', () => {
+            isExploded = !isExploded;
+            const lens = document.getElementById('hotspotLens');
+            const chassis = document.getElementById('hotspotChassis');
+            const text = document.getElementById('explodeBtnText');
+
+            if (isExploded) {
+                lens.style.transform = 'translateZ(50px) scale(1.1)';
+                chassis.style.transform = 'scale(0.95)';
+                text.innerText = 'Kembalikan Tampilan Utuh';
+            } else {
+                lens.style.transform = 'none';
+                chassis.style.transform = 'none';
+                text.innerText = 'Urai Komponen Optik 3D';
+            }
+        });
+
+        // 5. Lightbox Controller
+        function openLightbox(url, title, artist, cat) {
+            document.getElementById('lightboxImg').src = url;
+            document.getElementById('lightboxTitle').innerText = title;
+            document.getElementById('lightboxArtist').innerText = `Fotografer: ${artist} • ${cat}`;
+            document.getElementById('lightbox').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // 6. Specification Tab Swapping
+        function switchSpecTab(mode) {
+            const studioBtn = document.getElementById('tab-studio');
+            const landscapeBtn = document.getElementById('tab-landscape');
+            const sensorText = document.getElementById('specSensorText');
+
+            if (mode === 'studio') {
+                studioBtn.className = 'px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-mono bg-gold text-black font-bold';
+                landscapeBtn.className = 'px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-mono bg-white/5 text-neutral-400 hover:text-white';
+                sensorText.innerText = 'Detail mikro sempurna untuk pencetakan komersial ukuran cetak spanduk besar tanpa pikselasi.';
+            } else {
+                landscapeBtn.className = 'px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-mono bg-gold text-black font-bold';
+                studioBtn.className = 'px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-mono bg-white/5 text-neutral-400 hover:text-white';
+                sensorText.innerText = 'Resolusi masif menangkap tekstur dedaunan dan bebatuan di kejauhan dengan jernih.';
+            }
+        }
+
+        // 7. Live Laser Engraving Text Preview Input
+        const engravingInput = document.getElementById('engravingInput');
+        const engravingPreview = document.getElementById('engravingPreview');
+
+        engravingInput.addEventListener('input', (e) => {
+            const val = e.target.value.toUpperCase();
+            engravingPreview.innerText = val || 'INISIAL ANDA';
+        });
+    </script>
+</body>
+</html>
